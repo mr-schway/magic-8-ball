@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   return runApp(
@@ -22,6 +23,7 @@ void main() {
             title: const Text('Ask Me Anything'),
             centerTitle: true,
           ),
+          body: const MyApp(),
         ),
       ),
     ),
@@ -36,8 +38,18 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  int picNum = 1;
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(
+      child: TextButton(
+        onPressed: () {
+          setState(() {
+            picNum = Random().nextInt(5) + 1;
+          });
+        },
+        child: Image.asset('images/ball$picNum.png'),
+      ),
+    );
   }
 }
